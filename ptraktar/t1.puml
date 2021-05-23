@@ -1,0 +1,94 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+left to right direction
+
+class App
+
+class OrderProduct{
+Ordering()
+}
+OrderProduct -- App
+
+class SellProduct{
+Selling()
+}
+SellProduct -- App
+
+interface Order {
+addProduct()
+addSupplier()
+}
+
+interface Sell{
+sellProduct()
+addCustomer()
+}
+
+class Warehouse1{
+toString
+addProduct()
+addSupplier()
+sellProduct()
+addCustomer()
+listSupplier()
+listCustomer()
+}
+
+Order -- OrderProduct
+Warehouse1 -- Order
+Sell -- SellProduct
+Warehouse1 -- Sell
+
+class Warehouse2{
+toString
+addProduct()
+sellProduct()
+}
+
+Warehouse1 --|> Warehouse2
+
+class Array{
+isEmpty
+contains
+printArray
+insert()
+adding()
+taking()
+}
+
+Array -- Warehouse1
+
+class Partners{
+getsList()
+addNewSupplier()
+getcList()
+addNewCustomer()
+}
+
+Partners -- Warehouse1
+
+class Products{
+getQty
+getName
+toString
+setQty()
+}
+
+Products -- Array
+
+class Customer{
+getcName
+toString
+}
+
+Customer -- Partners
+
+class Supplier{
+getsName
+toString
+}
+
+Supplier -- Partners
+
+@enduml
